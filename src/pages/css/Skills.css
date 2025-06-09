@@ -1,0 +1,448 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.skills-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 80px;
+  background: rgba(13, 27, 54, 0.95);
+  backdrop-filter: blur(15px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(45deg, #f1c40f, #f39c12);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1e3c72;
+  font-weight: 700;
+  font-size: 20px;
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+  margin-bottom: 8px;
+}
+
+.logo-text {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  font-weight: 500;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.nav-item {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.nav-item.active {
+  background: linear-gradient(45deg, #f1c40f, #f39c12);
+  box-shadow: 0 4px 15px rgba(241, 196, 15, 0.4);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 25px;
+  background: #f1c40f;
+  border-radius: 0 2px 2px 0;
+}
+
+.nav-icon {
+  font-size: 20px;
+  filter: grayscale(0.3);
+  transition: filter 0.3s ease;
+}
+
+.nav-item:hover .nav-icon,
+.nav-item.active .nav-icon {
+  filter: grayscale(0);
+}
+
+.nav-item.active .nav-icon {
+  filter: grayscale(0) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  color: #1e3c72;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 80px;
+  padding: 40px 60px;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Code Tags */
+.code-tag {
+  position: absolute;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  color: #f1c40f;
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.opening-tag {
+  top: 30px;
+  left: 100px;
+}
+
+.closing-tag {
+  bottom: 60px;
+  left: 100px;
+}
+
+.html-tag {
+  bottom: 30px;
+  left: 100px;
+}
+
+.title-tag {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  color: #f1c40f;
+  opacity: 0.7;
+  margin-top: -10px;
+  margin-left: 20px;
+}
+
+/* Content Section */
+.content-section {
+  max-width: 600px;
+  margin-top: 80px;
+  z-index: 2;
+  position: relative;
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #f1c40f;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.highlight {
+  color: #f1c40f;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.highlight:hover {
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+}
+
+.link {
+  color: #f1c40f;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+  text-decoration: none;
+}
+
+/* Floating Tech Skills */
+.tech-skills {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tech-skill {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: float 6s ease-in-out infinite, fadeIn 1s ease-out both;
+  transition: all 0.3s ease;
+  cursor: default;
+  pointer-events: auto;
+}
+
+.tech-skill:hover {
+  background: rgba(241, 196, 15, 0.2);
+  border-color: rgba(241, 196, 15, 0.4);
+  color: #f1c40f;
+  transform: scale(1.1);
+  box-shadow: 0 5px 20px rgba(241, 196, 15, 0.3);
+}
+
+.tech-skill.small {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+.tech-skill.medium {
+  font-size: 1rem;
+  padding: 12px 20px;
+}
+
+.tech-skill.large {
+  font-size: 1.2rem;
+  padding: 15px 25px;
+  font-weight: 700;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-15px) rotate(0.5deg);
+  }
+}
+
+/* Staggered Delays for Natural Movement */
+.tech-skill:nth-child(1) { animation-duration: 8s; }
+.tech-skill:nth-child(2) { animation-duration: 7s; animation-delay: 1s; }
+.tech-skill:nth-child(3) { animation-duration: 9s; animation-delay: 2s; }
+.tech-skill:nth-child(4) { animation-duration: 6s; animation-delay: 1.5s; }
+.tech-skill:nth-child(5) { animation-duration: 10s; animation-delay: 3s; }
+.tech-skill:nth-child(6) { animation-duration: 7.5s; animation-delay: 2.5s; }
+.tech-skill:nth-child(7) { animation-duration: 8.5s; animation-delay: 4s; }
+.tech-skill:nth-child(8) { animation-duration: 6.5s; animation-delay: 3.5s; }
+
+/* Bottom Link */
+.bottom-link {
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  z-index: 2;
+}
+
+.watch-text {
+  font-size: 0.9rem;
+  color: #f1c40f;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.watch-text:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.7);
+}
+
+/* Mouse Follower */
+.mouse-follower {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(241, 196, 15, 0.8), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: all 0.1s ease-out;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px rgba(241, 196, 15, 0.5);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    padding: 40px 40px;
+  }
+  
+  .main-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 50px;
+  }
+  
+  .main-content {
+    margin-left: 70px;
+    padding: 30px 20px;
+  }
+  
+  .content-section {
+    margin-top: 60px;
+  }
+  
+  .main-title {
+    font-size: 2.8rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+  
+  .tech-skill {
+    font-size: 0.8rem !important;
+    padding: 8px 12px !important;
+  }
+  
+  .bottom-link {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+  
+  
+  .nav-item {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .nav-icon {
+    font-size: 16px;
+  }
+  
+  .main-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .content-section {
+    margin-top: 40px;
+    margin-bottom: 80px;
+  }
+  
+  .tech-skills {
+    display: none; /* Hide floating skills on very small screens for better readability */
+  }
+  
+  .mouse-follower {
+    display: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #f1c40f, #f39c12);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #f39c12, #e67e22);
+}

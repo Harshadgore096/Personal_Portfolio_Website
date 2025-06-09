@@ -1,0 +1,254 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    
+  }
+  
+  .education-container {
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+  }
+  
+  /* Background Stars Animation */
+  .stars-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  
+  /* Sidebar Navigation */
+  
+  
+ 
+  /* Main Content */
+  
+  
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .code-tags {
+    margin: 20px 0;
+  }
+  
+  .code-tag {
+    color: #ffd700;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    opacity: 0.8;
+  }
+  
+  .main-title {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin: 40px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Education Cards */
+  .education-grid {
+    display: grid;
+    gap: 30px;
+    margin: 60px 0;
+  }
+  
+  .education-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ffd700, #ffed4e);
+  }
+  
+  .education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .degree-title {
+    font-size: 1.5rem;
+    color: #ffd700;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .education-year {
+    background: rgba(255, 215, 0, 0.2);
+    color: #ffd700;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .institution-name {
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  
+  .education-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  /* Skills Section */
+  .skills-section {
+    margin: 80px 0;
+  }
+  
+  .skills-title {
+    font-size: 2.5rem;
+    color: #ffd700;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .skill-tag {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 25px;
+    padding: 15px 25px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .skill-tag:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
+  }
+  
+  /* Bottom Tags and Footer */
+  .bottom-tags {
+    margin-top: 100px;
+  }
+  
+  .footer-text {
+    text-align: right;
+    color: #ffd700;
+    font-size: 14px;
+    margin-top: 40px;
+    opacity: 0.8;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .main-content {
+      padding: 40px 60px;
+    }
+    
+    .main-title {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+   
+    .main-content {
+      margin-left: 60px;
+      padding: 30px 40px;
+    }
+    
+    .main-title {
+      font-size: 2.5rem;
+    }
+    
+    .education-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+    }
+    
+    .logo-text {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .main-content {
+      margin-left: 60px;
+      padding: 20px 25px;
+    }
+    
+    .main-title {
+      font-size: 2rem;
+    }
+    
+    .education-card {
+      padding: 20px;
+    }
+    
+    .degree-title {
+      font-size: 1.3rem;
+    }
+    
+  
+  }
